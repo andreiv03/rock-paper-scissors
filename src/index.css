@@ -1,0 +1,66 @@
+/* CSS Variables */
+
+:root {
+  --paper-gradient: to top, hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+  --paper-shadow: #2944c5;
+  --scissors-gradient: to top, hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+  --scissors-shadow: #c36e1e;
+  --rock-gradient: to top, hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+  --rock-shadow: #9d1730;
+  --lizard-gradient: to top, hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+  --lizard-shadow: #9d1730;
+  --spock-gradient: to top, hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+  --spock-shadow: #9d1730;
+
+  --dark-text: hsl(229, 25%, 31%);
+  --score-text: hsl(229, 64%, 46%);
+  --header-outline: hsl(217, 16%, 45%);
+  --white: #e8e8e8;
+  --dark-white: #bcc0cd;
+  --line: #141539;
+
+  --radial-gradient: ellipse at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+}
+
+/* Reset default styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 16px;
+}
+
+/* General styles */
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(var(--radial-gradient));
+  padding-top: 3rem;
+}
+
+/* Import components */
+/* Header */
+@import url("./components/header/header.css");
+
+/* Game */
+@import url("./components/game/game.css");
+@import url("./components/game/game-modes/modern-game/modern-game.css");
+@import url("./components/game/game-modes/legacy-game/legacy-game.css");
+@import url("./components/game/game-modes/match/match.css");
+@import url("./components/game/game-modes/match/results/results.css");
+
+/* Buttons */
+@import url("./components/buttons/buttons.css");

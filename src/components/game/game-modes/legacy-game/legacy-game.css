@@ -1,0 +1,131 @@
+.legacy-game {
+  position: relative;
+  margin: 0 auto;
+  width: 450px;
+  height: 400px;
+  margin-top: 3.5rem;
+}
+
+.legacy-game__item {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.legacy-game__item svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legacy-game__item-inner {
+  background: var(--white);
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 7px 0px var(--dark-white) inset;
+}
+
+.legacy-game__item-inner svg path {
+  fill: var(--dark-text);
+}
+
+.legacy-game__rock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.legacy-game__paper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.legacy-game__scissors {
+  position: absolute;
+  bottom: 0;
+  left: 137.5px;
+  z-index: 10;
+}
+
+.legacy-game-layout {
+  width: 300px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.legacy-game-layout__line:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: calc(100% - 20px);
+  right: 0;
+  background: var(--line);
+}
+
+.legacy-game-layout__line:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 20px;
+  height: 100%;
+  background: var(--line);
+  transform: rotate(-30deg);
+}
+
+.legacy-game-layout__line:nth-child(3) {
+  position: absolute;
+  top: 0;
+  right: 25%;
+  width: 20px;
+  height: 100%;
+  background: var(--line);
+  transform: rotate(30deg);
+}
+
+@media screen and (max-width: 1024px) {
+  .legacy-game {
+    width: 300px;
+    height: 275px;
+  }
+
+  .legacy-game__item {
+    width: 125px;
+    height: 125px;
+  }
+
+  .legacy-game__item svg {
+    transform: scale(0.7);
+  }
+
+  .legacy-game__scissors {
+    left: 87.5px;
+  }
+
+  .legacy-game-layout {
+    width: 200px;
+    height: 150px;
+  }
+
+  .legacy-game-layout__line:nth-child(1) {
+    bottom: calc(100% - 15px);
+  }
+
+  .legacy-game-layout__line:nth-child(2),
+  .legacy-game-layout__line:nth-child(3) {
+    width: 15px;
+  }
+}
