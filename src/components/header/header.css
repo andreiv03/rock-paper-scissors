@@ -10,6 +10,7 @@
 
 .header img {
   max-width: 150px;
+  height: 100px;
   object-fit: contain;
 }
 
@@ -45,6 +46,7 @@
 
   .header img {
     max-width: 100px;
+    height: 80px;
   }
 
   .header__score {

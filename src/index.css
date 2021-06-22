@@ -8,9 +8,9 @@
   --rock-gradient: to top, hsl(349, 71%, 52%), hsl(349, 70%, 56%);
   --rock-shadow: #9d1730;
   --lizard-gradient: to top, hsl(261, 73%, 60%), hsl(261, 72%, 63%);
-  --lizard-shadow: #9d1730;
+  --lizard-shadow: #5f38a8;
   --spock-gradient: to top, hsl(189, 59%, 53%), hsl(189, 58%, 57%);
-  --spock-shadow: #9d1730;
+  --spock-shadow: #2b8dab;
 
   --dark-text: hsl(229, 25%, 31%);
   --score-text: hsl(229, 64%, 46%);
@@ -49,6 +49,7 @@ body {
   height: 100%;
   background: radial-gradient(var(--radial-gradient));
   padding-top: 3rem;
+  overflow: hidden;
 }
 
 /* Import components */

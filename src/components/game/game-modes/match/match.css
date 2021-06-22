@@ -13,6 +13,49 @@
   cursor: initial;
 }
 
+.match__user-item-glow {
+  left: -28%;
+}
+
+.match__house-item-glow {
+  right: -28%;
+}
+
+.match__user-item-glow,
+.match__house-item-glow {
+  background: var(--white);
+  opacity: 0.1;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+}
+
+.match__user-item-glow > div,
+.match__house-item-glow > div {
+  background: var(--white);
+  opacity: 0.5;
+  width: 475px;
+  height: 475px;
+  border-radius: 50%;
+  position: absolute;
+  top: -62.5px;
+  left: -62.5px;
+}
+
+.match__user-item-glow > div > div,
+.match__house-item-glow > div > div {
+  background: var(--white);
+  opacity: 0.5;
+  width: 625px;
+  height: 625px;
+  border-radius: 50%;
+  position: absolute;
+  top: -75px;
+  left: -75px;
+}
+
 .match__user-item-inner,
 .match__house-item-inner {
   background: var(--white);
@@ -107,5 +150,48 @@
     width: 155px;
     bottom: 100px;
     top: unset;
+  }
+
+  .match__user-item-glow {
+    left: -8%;
+  }
+
+  .match__house-item-glow {
+    right: -8%;
+  }
+
+  .match__user-item-glow,
+  .match__house-item-glow {
+    background: var(--white);
+    opacity: 0.1;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+  }
+
+  .match__user-item-glow > div,
+  .match__house-item-glow > div {
+    background: var(--white);
+    opacity: 0.5;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    top: -37.5px;
+    left: -37.5px;
+  }
+
+  .match__user-item-glow > div > div,
+  .match__house-item-glow > div > div {
+    background: var(--white);
+    opacity: 0.5;
+    width: 325px;
+    height: 325px;
+    border-radius: 50%;
+    position: absolute;
+    top: -37.5px;
+    left: -37.5px;
   }
 }

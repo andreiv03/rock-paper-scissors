@@ -1,0 +1,194 @@
+.modern-game {
+  position: relative;
+  margin: 0 auto;
+  width: 450px;
+  height: 400px;
+  margin-top: 3rem;
+}
+
+.modern-game__item {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.modern-game__item svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.8);
+}
+
+.modern-game__item-inner {
+  background: var(--white);
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 7px 0px var(--dark-white) inset;
+}
+
+.modern-game__item-inner svg path {
+  fill: var(--dark-text);
+}
+
+.modern-game__rock {
+  position: absolute;
+  top: 0;
+  left: 162.5px;
+  z-index: 10;
+}
+
+.modern-game__paper {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  z-index: 10;
+}
+
+.modern-game__scissors {
+  position: absolute;
+  bottom: 0;
+  right: 65px;
+  z-index: 10;
+}
+
+.modern-game__lizard {
+  position: absolute;
+  bottom: 0;
+  left: 65px;
+  z-index: 10;
+}
+
+.modern-game__spock {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 10;
+}
+
+.modern-game-layout {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modern-game-layout__line:nth-child(1) {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  height: 20px;
+  width: 50%;
+  background: var(--line);
+  transform: rotate(35deg);
+}
+
+.modern-game-layout__line:nth-child(2) {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 20px;
+  height: 50%;
+  background: var(--line);
+  transform: rotate(15deg);
+}
+
+.modern-game-layout__line:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  background: var(--line);
+}
+
+.modern-game-layout__line:nth-child(4) {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 20px;
+  height: 50%;
+  background: var(--line);
+  transform: rotate(-15deg);
+}
+
+.modern-game-layout__line:nth-child(5) {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  height: 20px;
+  width: 50%;
+  background: var(--line);
+  transform: rotate(-35deg);
+}
+
+@media screen and (max-width: 1024px) {
+  .modern-game {
+    width: 325px !important;
+    height: 275px;
+  }
+
+  .modern-game__item {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modern-game__item svg {
+    transform: scale(0.6);
+  }
+
+  .modern-game__rock {
+    left: 112.5px;
+  }
+
+  .modern-game__paper,
+  .modern-game__spock {
+    top: 90px;
+  }
+
+  .modern-game__scissors {
+    right: 45px;
+    bottom: -50px;
+  }
+
+  .modern-game__lizard {
+    left: 45px;
+    bottom: -50px;
+  }
+
+  .modern-game-layout {
+    width: 200px;
+    height: 250px;
+  }
+
+  .modern-game-layout__line:nth-child(1),
+  .modern-game-layout__line:nth-child(3),
+  .modern-game-layout__line:nth-child(5) {
+    height: 15px;
+  }
+
+  .modern-game-layout__line:nth-child(2),
+  .modern-game-layout__line:nth-child(4) {
+    width: 15px;
+  }
+
+  .modern-game-layout__line:nth-child(1),
+  .modern-game-layout__line:nth-child(5) {
+    top: 65px;
+  }
+
+  .modern-game-layout__line:nth-child(2),
+  .modern-game-layout__line:nth-child(3),
+  .modern-game-layout__line:nth-child(4) {
+    bottom: -20px;
+  }
+}

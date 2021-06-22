@@ -6,10 +6,10 @@ import Results from "./results/Results.js";
 
 export default function Match({ icons, items, containerControls }) {
   const gameContext = useContext(GameContext);
-  const [score] = gameContext.score;
   const [userItem] = gameContext.userItem;
   const [houseItem, setHouseItem] = gameContext.houseItem;
-  const [handleScore] = gameContext.handleScore;
+  const [winner] = gameContext.winner;
+  const [handleWinner] = gameContext.handleWinner;
 
   const [isReady, setIsReady] = useState(false);
   const [message, setMessage] = useState("");
@@ -21,8 +21,8 @@ export default function Match({ icons, items, containerControls }) {
   const handleLayoutAnimationComplete = () => {
     if (isReady) return;
 
-    controlsUserItemTitle.start({ opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } });
-    controlsHouseItemTitle.start({ opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } });
+    controlsUserItemTitle.start({ opacity: 1, transition: { duration: 0.4, ease: "easeInOut" } });
+    controlsHouseItemTitle.start({ opacity: 1, transition: { duration: 0.4, ease: "easeInOut" } });
 
     const randomIndex = Math.floor(Math.random() * 3);
 
@@ -37,33 +37,48 @@ export default function Match({ icons, items, containerControls }) {
 
     const userChoice = items.indexOf(userItem);
     const houseChoice = items.indexOf(houseItem);
-    const result = (((userChoice - houseChoice) % 3) + 3) % 3;
 
-    if (result === 0)
-      setMessage("Tie");
+    handleWinner(userChoice, houseChoice);
+    
+    if (winner === "user") setMessage("You win");
+    else if (winner === "house") setMessage("You lose");
+    else setMessage("Tie");
 
-    else if (result === 1) {
-      handleScore(parseInt(score) + 1);
-      setMessage("You win");
-    }
-    else if (result === 2) {
-      handleScore(parseInt(score) - 1);
-      setMessage("You lose");
-    }
-
-    if (window.innerWidth > 1024) containerControls.start({ width: "600px" });
-    else containerControls.start({ width: "300px" });
+    if (window.innerWidth > 1024)
+      containerControls.start({ width: "600px" });
   }
 
   return (
     <>
+      {
+        winner === "user" && (
+          <motion.div className="match__user-item-glow" initial={{ scale: 0 }} animate={{ scale: 1 }}>
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )
+      }
+
+      {
+        winner === "house" && (
+          <motion.div className="match__house-item-glow" initial={{ scale: 0 }} animate={{ scale: 1 }}>
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )
+      }
+
       <motion.h2 className="match__user-item-title" initial={{ opacity: 0 }} animate={controlsUserItemTitle}>You picked</motion.h2>
       <motion.h2 className="match__house-item-title" initial={{ opacity: 0 }} animate={controlsHouseItemTitle}>The house picked</motion.h2>
 
       <motion.div className="match__house-item" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <div className="match__house-item-background"></div>
       </motion.div>
-
+    
       <motion.div
         className="match__user-item"
         style={{ background: `linear-gradient(var(--${userItem}-gradient))`, boxShadow: `0 8px 0 var(--${userItem}-shadow)` }}
