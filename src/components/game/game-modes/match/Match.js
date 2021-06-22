@@ -38,7 +38,7 @@ export default function Match({ icons, items, containerControls }) {
     const userChoice = items.indexOf(userItem);
     const houseChoice = items.indexOf(houseItem);
 
-    handleWinner(userChoice, houseChoice);
+    const winner = handleWinner(userChoice, houseChoice);
     
     if (winner === "user") setMessage("You win");
     else if (winner === "house") setMessage("You lose");

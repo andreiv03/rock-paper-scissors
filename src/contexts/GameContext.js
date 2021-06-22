@@ -32,11 +32,13 @@ export const GameContextProvider = ({ children }) => {
       if (result === 1) {
         handleScore(parseInt(score) + 1);
         setWinner("user");
+        return "user";
       }
 
       else if (result === 2) {
         handleScore(parseInt(score) - 1);
         setWinner("house");
+        return "house";
       }
     } else if (mode === "modern") {
       const result = (((userChoice - houseChoice) % 5) + 5) % 5;
@@ -44,13 +46,17 @@ export const GameContextProvider = ({ children }) => {
       if (result === 1 || result === 2) {
         handleScore(parseInt(score) + 1);
         setWinner("user");
+        return "user";
       }
 
       else if (result === 3 || result === 4) {
         handleScore(parseInt(score) - 1);
         setWinner("house");
+        return "house";
       }
     }
+
+    return "";
   }
 
   const state = {
