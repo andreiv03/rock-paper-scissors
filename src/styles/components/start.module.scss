@@ -1,0 +1,132 @@
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  .items {
+    position: relative;
+    width: 250px;
+    height: 250px;
+
+    .item {
+      position: absolute;
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.25rem solid;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 150ms ease-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &.rock {
+        top: -75px;
+        left: -100px;
+        border-color: var(--rock-color);
+        box-shadow: 0px 8px 0px var(--rock-shadow),
+          0px 8px 0px var(--shadow) inset;
+      }
+
+      &.paper {
+        top: -75px;
+        right: -100px;
+        border-color: var(--paper-color);
+        box-shadow: 0px 8px 0px var(--paper-shadow),
+          0px 8px 0px var(--shadow) inset;
+      }
+
+      &.scissors {
+        bottom: -75px;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        border-color: var(--scissors-color);
+        box-shadow: 0px 8px 0px var(--scissors-shadow),
+          0px 8px 0px var(--shadow) inset;
+
+        &:hover {
+          transform: translateX(-50%) scale(1.05);
+        }
+      }
+    }
+
+    .lines {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+
+      span {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        background: var(--black);
+      }
+
+      span:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+
+      span:nth-child(2) {
+        top: 50%;
+        left: -25%;
+        transform: rotate(60deg);
+      }
+
+      span:nth-child(3) {
+        top: 50%;
+        right: -25%;
+        transform: rotate(-60deg);
+      }
+    }
+  }
+}
+
+// Media Queries
+@media screen and (max-width: 1024px) {
+  .page {
+    .items {
+      width: 200px;
+      height: 200px;
+
+      .item {
+        width: 125px;
+        height: 125px;
+        border-width: 1rem;
+
+        &.rock {
+          top: -55px;
+          left: -65px;
+        }
+
+        &.paper {
+          top: -55px;
+          right: -65px;
+        }
+
+        &.scissors {
+          bottom: -55px;
+        }
+
+        img {
+          transform: scale(0.7);
+        }
+      }
+
+      .lines {
+        span {
+          height: 15px;
+        }
+      }
+    }
+  }
+}
