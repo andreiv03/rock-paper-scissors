@@ -1,82 +1,47 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { useContext, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { GameContext } from "../contexts/game-context";
+import { houseVariants, resultsVariants } from "../variants/game-variants";
 
 import styles from "../styles/components/game.module.scss";
 
 interface PropsInterface {
   items: string[];
-  score: string;
-  setScore: React.Dispatch<React.SetStateAction<string>>;
-  choice: string;
-  setChoice: React.Dispatch<React.SetStateAction<string>>;
-  setInGame: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const resultsVariants = {
-  initial: {
-    opacity: 0
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-      ease: "easeIn"
-    }
-  }
-};
+const Game: React.FC<PropsInterface> = ({ items }) => {
+  const { choices: [choices, setChoices], inGame: [, setInGame], winner: [winner, setWinner] } = useContext(GameContext);
 
-const Game: React.FC<PropsInterface> = ({ items, score, setScore, choice, setChoice, setInGame }) => {
-  const [house, setHouse] = useState("");
-  const [winner, setWinner] = useState(0);
   const [isUserReady, setIsUserReady] = useState(false);
   const [isHouseReady, setIsHouseReady] = useState(false);
 
-  const houseControls = useAnimation();
-
-  useEffect(() => {
-    if (!isUserReady) return;
+  const handleLayoutAnimationComplete = () => {
+    setIsUserReady(true);
 
     const randomIndex = Math.floor(Math.random() * 3);
-    setHouse(items[randomIndex]);
+    setChoices({ ...choices, house: items[randomIndex] });
+  }
 
-    houseControls.start({
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: "easeInOut"
-      }
-    });
-  }, [isUserReady]);
+  const handleAnimationComplete = () => {
+    setIsHouseReady(true);
 
-  useEffect(() => {
-    if(!isHouseReady) return;
+    const userChoiceIndex = items.indexOf(choices.user);
+    const houseChoiceIndex = items.indexOf(choices.house);
+    const result = (((userChoiceIndex - houseChoiceIndex) % 3) + 3) % 3;
 
-    const choiceIndex = items.indexOf(choice);
-    const houseIndex = items.indexOf(house);
-    const result = (((choiceIndex - houseIndex) % 3) + 3) % 3;
-
-    if (result === 1) {
-      const newScore = (parseInt(score) + 1).toString(10);
-      localStorage.setItem("score", newScore);
-      setScore(newScore);
-      setWinner(0);
-    } else if (result === 2) {
-      if (parseInt(score) > 0) {
-        const newScore = (parseInt(score) - 1).toString(10);
-        localStorage.setItem("score", newScore);
-        setScore(newScore);
-      }
-      setWinner(1);
-    } else setWinner(2);
-  }, [isHouseReady]);
+    switch (result) {
+      case 1: return setWinner("user");
+      case 2: return setWinner("house");
+    }
+  }
 
   const handleEndGame = () => {
-    setHouse("");
-    setWinner(0);
+    setChoices({ user: "", house: "" });
+    setInGame(false);
+    setWinner("");
     setIsUserReady(false);
     setIsHouseReady(false);
-    setChoice("");
-    setInGame(false);
   }
 
   return (
@@ -85,18 +50,18 @@ const Game: React.FC<PropsInterface> = ({ items, score, setScore, choice, setCho
         <div className={styles.user}>
           <h3 className={isUserReady ? styles.visible : ""}>You picked</h3>
           <motion.div
-            className={`${styles.item} ${styles[choice]}`}
-            layoutId={choice}
-            onLayoutAnimationComplete={() => setIsUserReady(true)}
+            className={`${styles.item} ${styles[choices.user]}`}
+            layoutId={choices.user}
+            onLayoutAnimationComplete={handleLayoutAnimationComplete}
           >
-            <img src={`/assets/svg/${choice}.svg`} alt={choice} />
+            <img src={`/assets/svg/${choices.user}.svg`} alt={choices.user} />
           </motion.div>
         </div>
 
         <AnimatePresence>
           {isHouseReady && (
             <motion.div className={styles.results} initial="initial" animate="animate" variants={resultsVariants}>
-              <h3>{winner === 0 ? "You win" : winner === 1 ? "You lose" : "Tie"}</h3>
+              <h3>{winner === "user" ? "You win" : winner === "house" ? "You lose" : "Tie"}</h3>
               <div className={styles.button} onClick={handleEndGame}>Play again</div>
             </motion.div>
           )}
@@ -105,14 +70,12 @@ const Game: React.FC<PropsInterface> = ({ items, score, setScore, choice, setCho
         <div className={styles.house}>
           <h3 className={isUserReady ? styles.visible : ""}>House picked</h3>
           <motion.div
-            className={`${styles.item} ${house ? styles[house] : ""}`}
+            className={`${styles.item} ${choices.house ? styles[choices.house] : ""}`}
             initial={{ scale: 0 }}
-            animate={houseControls}
-            onAnimationComplete={() => setIsHouseReady(true)}
+            animate={choices.house && houseVariants}
+            onAnimationComplete={handleAnimationComplete}
           >
-            {house && (
-              <img src={`/assets/svg/${house}.svg`} alt={house} />
-            )}
+            {choices.house && <img src={`/assets/svg/${choices.house}.svg`} alt={choices.house} />}
           </motion.div>
         </div>
       </div>

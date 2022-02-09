@@ -1,6 +1,5 @@
 .header {
-  width: 100%;
-  max-width: 500px;
+  width: min(500px, 100%);
   margin: 0 auto;
   padding: 1rem 1.25rem;
   border: 3px solid var(--outline);
@@ -10,15 +9,24 @@
 
   .logo {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    img {
-      max-width: 150px;
-      object-fit: contain;
+    span {
+      color: var(--white);
+      font-size: 2.25rem;
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+
+      &:not(:last-child) {
+        margin-bottom: -0.5rem;
+      }
     }
   }
 
   .score {
-    padding: 1rem 2rem;
+    padding: 1rem 1.75rem;
     border-radius: 0.5rem;
     background: var(--white);
     display: flex;
@@ -35,8 +43,9 @@
     }
 
     h4 {
+      margin-top: 0.2rem;
       color: var(--foreground);
-      font-size: 3rem;
+      font-size: 2.75rem;
       font-weight: 700;
       line-height: 1;
     }
@@ -46,11 +55,15 @@
 // Media Queries
 @media screen and (max-width: 1024px) {
   .header {
-    max-width: 350px;
+    width: min(100%, 350px);
 
     .logo {
-      img {
-        max-width: 100px;
+      span {
+        font-size: 1.75rem;
+
+        &:not(:last-child) {
+          margin-bottom: -0.35rem;
+        }
       }
     }
 
@@ -58,7 +71,8 @@
       padding: 0.75rem 1.5rem;
 
       h3 {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
       }
 
       h4 {

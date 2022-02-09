@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { AnimateSharedLayout } from "framer-motion";
 
+import { GameContext, GameProvider } from "./contexts/game-context";
+
 import "./styles/globals.scss";
 import Header from "./components/header";
+import Rules from "./components/rules";
 import Start from "./components/start";
 import Game from "./components/game";
 
 const items = ["rock", "paper", "scissors"];
 
 const App: React.FC = () => {
-  const [score, setScore] = useState("0");
-  const [choice, setChoice] = useState("");
-  const [inGame, setInGame] = useState(false);
-
-  useEffect(() => {
-    const score = localStorage.getItem("score");
-    if (score) setScore(score);
-    else localStorage.setItem("score", "0");
-  }, [score]);
-
   return (
-    <>
-      <Header score={score} />
+    <GameProvider>
+      <Header />
+      <Rules />
       <AnimateSharedLayout>
-        {!inGame ? (
-          <Start items={items} setChoice={setChoice} setInGame={setInGame} />
-        ) : (
-          <Game items={items} score={score} setScore={setScore} choice={choice} setChoice={setChoice} setInGame={setInGame} />
-        )}
+        <GameContext.Consumer>
+          {({ inGame: [inGame] }) => !inGame ? <Start items={items} /> : <Game items={items} />}
+        </GameContext.Consumer>
       </AnimateSharedLayout>
-    </>
+    </GameProvider>
   );
 }
 

@@ -1,15 +1,18 @@
+import { useContext } from "react";
 import { motion } from "framer-motion";
+
+import { GameContext } from "../contexts/game-context";
 import styles from "../styles/components/start.module.scss";
 
 interface PropsInterface {
   items: string[];
-  setChoice: React.Dispatch<React.SetStateAction<string>>;
-  setInGame: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Start: React.FC<PropsInterface> = ({ items, setChoice, setInGame }) => {
+const Start: React.FC<PropsInterface> = ({ items }) => {
+  const { choices: [choices, setChoices], inGame: [, setInGame] } = useContext(GameContext);
+
   const handleInteraction = (item: string) => {
-    setChoice(item);
+    setChoices({ ...choices, user: item });
     setInGame(true);
   }
 
