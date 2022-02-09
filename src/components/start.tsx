@@ -27,7 +27,7 @@ const Start: React.FC<PropsInterface> = ({ items }) => {
             transition={{ duration: 0 }}
             onClick={() => handleInteraction(item)}
           >
-            <img src={`./assets/svg/${item}.svg`} alt={item} />
+            <img src={`assets/svg/${item}.svg`} alt={item} />
           </motion.div>
         ))}
 
