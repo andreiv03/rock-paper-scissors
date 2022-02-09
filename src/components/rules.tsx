@@ -12,10 +12,10 @@ const Rules: React.FC = () => {
         <div className={styles.top_section}>
           <h3>Rules</h3>
           <div className={styles.close} onClick={() => setIsActive(false)}>
-            <img src="/assets/svg/close.svg" alt="Close" />
+            <img src="./assets/svg/close.svg" alt="Close" />
           </div>
         </div>
-        <img src="/assets/svg/rules.svg" alt="Rules" />
+        <img src="./assets/svg/rules.svg" alt="Rules" />
       </div>
     </>
   );

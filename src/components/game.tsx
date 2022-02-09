@@ -54,7 +54,7 @@ const Game: React.FC<PropsInterface> = ({ items }) => {
             layoutId={choices.user}
             onLayoutAnimationComplete={handleLayoutAnimationComplete}
           >
-            <img src={`/assets/svg/${choices.user}.svg`} alt={choices.user} />
+            <img src={`./assets/svg/${choices.user}.svg`} alt={choices.user} />
           </motion.div>
         </div>
 
@@ -75,7 +75,7 @@ const Game: React.FC<PropsInterface> = ({ items }) => {
             animate={choices.house && houseVariants}
             onAnimationComplete={handleAnimationComplete}
           >
-            {choices.house && <img src={`/assets/svg/${choices.house}.svg`} alt={choices.house} />}
+            {choices.house && <img src={`./assets/svg/${choices.house}.svg`} alt={choices.house} />}
           </motion.div>
         </div>
       </div>
