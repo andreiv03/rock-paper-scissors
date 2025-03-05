@@ -1,44 +1,48 @@
-import { useContext } from "react";
+import { useCallback } from "react";
 import { motion } from "framer-motion";
 
-import { GameContext } from "../contexts/game-context";
-import styles from "../styles/components/start.module.scss";
+import { GameContext } from "@contexts/game-context";
+import { useContextHook } from "@hooks/use-context-hook";
+import type { Item } from "@typings/game-types";
+import { ITEMS } from "@utils/constants";
+import { getIconPath } from "@utils/icon-loader";
 
-interface PropsInterface {
-  items: string[];
+import styles from "@styles/components/start.module.scss";
+
+const Start: React.FC = () => {
+	const { setChoices, setIsPlaying } = useContextHook(GameContext);
+
+	const chooseItem = useCallback(
+		(item: Item) => {
+			setChoices({ user: item, house: null });
+			setIsPlaying(true);
+		},
+		[setChoices, setIsPlaying],
+	);
+
+	return (
+		<div className={styles["start"]}>
+			<div className={styles["items"]}>
+				<div className={styles["lines"]}>
+					{ITEMS.map((_, index) => (
+						<span key={index} />
+					))}
+				</div>
+
+				{ITEMS.map((item) => (
+					<motion.div
+						className={`${styles["item"]} ${styles[item]}`}
+						key={item}
+						layoutId={item}
+						onClick={() => chooseItem(item)}
+						transition={{ duration: 0 }}
+					>
+						<img alt={item} src={getIconPath(item)} />
+					</motion.div>
+				))}
+			</div>
+		</div>
+	);
 };
-
-const Start: React.FC<PropsInterface> = ({ items }) => {
-  const { choices: [choices, setChoices], inGame: [, setInGame] } = useContext(GameContext);
-
-  const handleInteraction = (item: string) => {
-    setChoices({ ...choices, user: item });
-    setInGame(true);
-  }
-
-  return (
-    <div className={styles.start}>
-      <div className={styles.items}>
-        {items.map((item, index) => (
-          <motion.div
-            key={index}
-            className={`${styles.item} ${styles[item]}`}
-            layoutId={item}
-            transition={{ duration: 0 }}
-            onClick={() => handleInteraction(item)}
-          >
-            <img src={`assets/svg/${item}.svg`} alt={item} />
-          </motion.div>
-        ))}
-
-        <div className={styles.lines}>
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default Start;

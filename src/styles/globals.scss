@@ -1,53 +1,47 @@
 :root {
-  --background: ellipse at top, #1f3756, #141539;
-  --foreground: #3b4363;
-  --outline: #606e85;
+	--background: ellipse at top, #1f3756, #141539;
+	--foreground: #3b4363;
+	--outline: #606e85;
+	--shadow: #bcc0cd;
 
-  --white: #e8e8e8;
-  --black: #141539;
-  --blue: #2a46c0;
+	--white: #e8e8e8;
+	--black: #141539;
+	--blue: #2a46c0;
 
-  --rock-color: #dd405d;
-  --rock-shadow: #9d1730;
-  --paper-color: #5671f5;
-  --paper-shadow: #2944c5;
-  --scissors-color: #eca922;
-  --scissors-shadow: #c36e1e;
-  --shadow: #bcc0cd;
+	--rock-color: #dd405d;
+	--rock-shadow: #9d1730;
+
+	--paper-color: #5671f5;
+	--paper-shadow: #2944c5;
+
+	--scissors-color: #eca922;
+	--scissors-shadow: #c36e1e;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html,
 body {
-  color: var(--foreground);
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-size: 16px;
+	color: var(--foreground);
+	font-family: "Barlow Semi Condensed", sans-serif;
+	font-size: 16px;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  padding: 2.5rem 1.5rem;
-  background: radial-gradient(var(--background));
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+	width: 100vw;
+	height: 100vh;
 }
 
 #root {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+	height: 100%;
+	padding: 2.5rem 1.5rem;
+	background: radial-gradient(var(--background));
+	display: flex;
+	flex-direction: column;
 }
-
-// Barlow Semi Condensed
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");

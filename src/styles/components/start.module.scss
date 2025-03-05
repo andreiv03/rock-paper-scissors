@@ -1,126 +1,121 @@
 .start {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
 
-  .items {
-    position: relative;
-    width: 250px;
-    height: 250px;
+	.items {
+		position: relative;
+		width: 250px;
+		height: 250px;
 
-    .item {
-      position: absolute;
-      width: 175px;
-      height: 175px;
-      border-radius: 50%;
-      background: var(--white);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
+		.item {
+			position: absolute;
+			width: 175px;
+			height: 175px;
+			border-radius: 50%;
+			background: var(--white);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
 
-      &.rock {
-        top: -75px;
-        left: -100px;
-        border: 1.25rem solid var(--rock-color);
-        box-shadow: 0px 8px 0px var(--rock-shadow),
-          0px 8px 0px var(--shadow) inset;
-      }
+			&.rock {
+				top: -75px;
+				left: -100px;
+				border: 1.25rem solid var(--rock-color);
+				box-shadow: 0px 8px 0px var(--rock-shadow), 0px 8px 0px var(--shadow) inset;
+			}
 
-      &.paper {
-        top: -75px;
-        right: -100px;
-        border: 1.25rem solid var(--paper-color);
-        box-shadow: 0px 8px 0px var(--paper-shadow),
-          0px 8px 0px var(--shadow) inset;
-      }
+			&.paper {
+				top: -75px;
+				right: -100px;
+				border: 1.25rem solid var(--paper-color);
+				box-shadow: 0px 8px 0px var(--paper-shadow), 0px 8px 0px var(--shadow) inset;
+			}
 
-      &.scissors {
-        bottom: -75px;
-        left: 37.5px;
-        border: 1.25rem solid var(--scissors-color);
-        box-shadow: 0px 8px 0px var(--scissors-shadow),
-          0px 8px 0px var(--shadow) inset;
-      }
-    }
+			&.scissors {
+				bottom: -75px;
+				left: 37.5px;
+				border: 1.25rem solid var(--scissors-color);
+				box-shadow: 0px 8px 0px var(--scissors-shadow), 0px 8px 0px var(--shadow) inset;
+			}
+		}
 
-    .lines {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
+		.lines {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
 
-      span {
-        position: absolute;
-        width: 100%;
-        height: 20px;
-        background: var(--black);
-      }
+			span {
+				position: absolute;
+				width: 100%;
+				height: 20px;
+				background: var(--black);
+			}
 
-      span:nth-child(1) {
-        top: 0;
-        left: 0;
-      }
+			span:nth-child(1) {
+				top: 0;
+				left: 0;
+			}
 
-      span:nth-child(2) {
-        top: 50%;
-        left: -25%;
-        transform: rotate(60deg);
-      }
+			span:nth-child(2) {
+				top: 50%;
+				left: -25%;
+				transform: rotate(60deg);
+			}
 
-      span:nth-child(3) {
-        top: 50%;
-        right: -25%;
-        transform: rotate(-60deg);
-      }
-    }
-  }
+			span:nth-child(3) {
+				top: 50%;
+				right: -25%;
+				transform: rotate(-60deg);
+			}
+		}
+	}
 }
 
-// Media Queries
 @media screen and (max-width: 1024px) {
-  .start {
-    .items {
-      width: 200px;
-      height: 200px;
+	.start {
+		.items {
+			width: 200px;
+			height: 200px;
 
-      .item {
-        width: 125px;
-        height: 125px;
+			.item {
+				width: 125px;
+				height: 125px;
 
-        &.rock,
-        &.paper,
-        &.scissors {
-          border-width: 1rem;
-        }
+				&.rock,
+				&.paper,
+				&.scissors {
+					border-width: 1rem;
+				}
 
-        &.rock {
-          top: -55px;
-          left: -50px;
-        }
+				&.rock {
+					top: -55px;
+					left: -50px;
+				}
 
-        &.paper {
-          top: -55px;
-          right: -50px;
-        }
+				&.paper {
+					top: -55px;
+					right: -50px;
+				}
 
-        &.scissors {
-          bottom: -25px;
-        }
+				&.scissors {
+					bottom: -25px;
+				}
 
-        img {
-          transform: scale(0.7);
-        }
-      }
+				img {
+					transform: scale(0.7);
+				}
+			}
 
-      .lines {
-        span {
-          height: 15px;
-        }
-      }
-    }
-  }
+			.lines {
+				span {
+					height: 15px;
+				}
+			}
+		}
+	}
 }
