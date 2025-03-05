@@ -1,54 +1,68 @@
-# React + TypeScript + Vite
+# Rock, Paper, Scissors 🪨📄✂️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Vite + React + TypeScript** web app that lets you **play the classic rock, paper, scissors game** with a dynamic UI and animations. Built with **Framer Motion**, it provides a smooth and interactive experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Play Against the Computer** – Make your move, and the AI will respond!
+- **Animated UI with Framer Motion** – Smooth transitions and effects.
+- **Score Tracking** – Keep track of your wins and losses.
+- **Responsive Design** – Works perfectly on mobile and desktop.
+- **Fast Performance with Vite** – Lightning-fast development and builds.
 
-## Expanding the ESLint configuration
+## ⚡ Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Vite** – Super-fast front-end tool for React projects.
+- **React + TypeScript** – Modern UI development with strong type safety.
+- **Framer Motion** – Animation library for smooth UI effects.
+- **SCSS Modules** – Modular styles with better maintainability.
+- **ESLint & Prettier** – Code linting and formatting for clean code.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ⚙️ Build & Installation
+
+### Prerequisites
+
+Before installing the project, ensure you have the following installed:
+
+- **Node.js (16+)** – Required to run Vite and React.
+- **npm** or **yarn** – To install dependencies and run scripts.
+
+### Installation Instructions
+
+Follow these steps to clone, build, and run the rock, paper, scissors game:
+```sh
+# Clone the repository
+git clone https://github.com/andreiv03/rock-paper-scissors.git
+cd rock-paper-scissors
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+
+# To create an optimized production build
+npm run build
+
+# To preview the production build
+npm run preview
 ```
+The app will be accessible at [http://localhost:5173](http://localhost:5173).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🤝 Contributing
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Contributions are welcome! If you'd like to enhance the project, follow these steps:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. **Fork** the repository
+2. Create a **feature branch** (`git checkout -b feature-branch`)
+3. **Commit** your changes (`git commit -m "feat: add new feature"`)
+4. **Push** your changes (`git push origin feature-branch`)
+5. Open a **Pull Request** 🚀
+
+For suggestions or bug reports, feel free to open an issue with the appropriate label.
+
+⭐ **If you find this project useful, consider giving it a star!** ⭐
+
+## 📜 License
+
+Distributed under the **MIT License**. See `LICENSE.txt` for details.
