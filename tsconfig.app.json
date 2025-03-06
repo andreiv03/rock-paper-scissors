@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		// Type Checking
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
 		"alwaysStrict": true,
@@ -22,7 +21,6 @@
 		"strictPropertyInitialization": true,
 		"useUnknownInCatchVariables": true,
 
-		// Modules
 		"allowArbitraryExtensions": false,
 		"allowImportingTsExtensions": true,
 		"allowUmdGlobalAccess": false,
@@ -52,7 +50,6 @@
 		"typeRoots": ["src/@types", "node_modules/@types"],
 		"types": [],
 
-		// Emit
 		"declaration": false,
 		"declarationMap": false,
 		"downlevelIteration": true,
@@ -70,16 +67,13 @@
 		"sourceMap": false,
 		"stripInternal": false,
 
-		// JavaScript Support
 		"allowJs": true,
 		"checkJs": true,
 		"maxNodeModuleJsDepth": 0,
 
-		// Editor Support
 		"disableSizeLimit": false,
 		"plugins": [],
 
-		// Interop Constraints
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": false,
 		"forceConsistentCasingInFileNames": true,
@@ -88,13 +82,11 @@
 		"preserveSymlinks": false,
 		"verbatimModuleSyntax": true,
 
-		// Backwards Compatibility
 		"noImplicitUseStrict": false,
 		"noStrictGenericChecks": false,
 		"suppressExcessPropertyErrors": false,
 		"suppressImplicitAnyIndexErrors": false,
 
-		// Language and Environment
 		"jsx": "preserve",
 		"jsxImportSource": "react",
 		"lib": ["dom", "dom.iterable", "esnext"],
@@ -103,17 +95,14 @@
 		"target": "esnext",
 		"useDefineForClassFields": true,
 
-		// Projects
 		"composite": false,
 		"incremental": true,
 		"tsBuildInfoFile": "node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
-		// Output Formatting
 		"noErrorTruncation": true,
 		"preserveWatchOutput": true,
 		"pretty": true,
 
-		// Completeness
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true
 	},
